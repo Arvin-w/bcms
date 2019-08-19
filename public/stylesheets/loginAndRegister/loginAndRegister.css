@@ -1,0 +1,12 @@
+
+.login { }
+.login .avatar { padding: 20px 0;}
+.login .avatar p { line-height: 40px; margin-top:10px; font-size: 16px;}
+
+.layoutFooter { margin-top:0;}
+.grass { background:url("../../images/grass.png") repeat-x left bottom; height: 110px; }
+
+.bg-warning { padding:5px 10px; display: none;}
+.errorMessage { height: 20px; line-height: 20px; color: #e10008; padding-left: 15px; font-size: 12px;}
+.errorMessage1 { height: 20px; }
+.form-group { margin-bottom:0;}

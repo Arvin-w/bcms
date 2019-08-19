@@ -1,0 +1,64 @@
+<%- include('../layouts/headTop', { title: '注册' }) %>
+<link href="../stylesheets/loginAndRegister/loginAndRegister.css" rel="stylesheet">
+<script src="/axios/dist/axios.js"></script>
+<%- include('../layouts/headMain') %>
+<div class="container login" id="login-app" v-cloak>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8 col-lg-push-4 col-md-push-4 col-sm-push-3 col-xs-push-2">
+            <div class="text-center avatar">
+                <img class="img-responsive center-block" src="images/avatarDefault.png">
+                <p>账号注册!</p>
+            </div>
+
+            <form id="registerForm" action="/success" method="post" enctype="application/x-www-form-urlencoded">
+                <div class="form-group">
+                    <label for="workId">工号</label>
+                    <input v-on:blur="verifyWorkId" v-model="workId" type="text" name="workId" class="form-control" id="workId" placeholder="请输入员工工号">
+                    <div class="errorMessage">{{ errorMessage }}</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">设置密码</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="6-12位字母、数字或下划线！">
+                    <div class="errorMessage"></div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">确认密码</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="确认密码">
+                    <div class="errorMessage"></div>
+                </div>
+
+                <button type="submit" id="submit" class="btn btn-default center-block">&nbsp;&nbsp;注&nbsp;&nbsp;册&nbsp;&nbsp;</button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="grass"></div>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#login-app',
+        data: {
+            workId: '',
+            errorMessage: ''
+        },
+        methods: {
+            verifyWorkId: function(){
+                axios.get('/verifyWorkId/' + this.workId).then(function(res){
+                    if(err){
+                        throw err;
+                    }
+                    if(!res.data){
+                        this.errorMessage = '请输入正确的员工工号！'
+                    }
+                }).catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+            }
+        }
+    })
+</script>

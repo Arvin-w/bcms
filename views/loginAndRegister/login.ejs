@@ -1,0 +1,65 @@
+<%- include('../layouts/headTop', { title: '登录' }) %>
+<link href="../stylesheets/loginAndRegister/loginAndRegister.css" rel="stylesheet">
+<script src="/axios/dist/axios.js"></script>
+<%- include('../layouts/headMain') %>
+
+
+<div class="container login" id="login-app">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8 col-lg-push-4 col-md-push-4 col-sm-push-3 col-xs-push-2">
+            <div class="text-center avatar">
+                <img class="img-responsive center-block" src="images/avatarDefault.png">
+                <p>欢迎回来， 登入账号去做你想做的那些事情吧！</p>
+            </div>
+            <div class="errorMessage text-center"></div>
+            <!--<form id="loginForm" action="/loginState" method="post" enctype="application/x-www-form-urlencoded">-->
+
+            <div class="form-group">
+                <label for="workId1">工号</label>
+                <input v-on:blur="verifyWorkId" v-model="workId" type="text" name="workId1" class="form-control"
+                       id="workId1" placeholder="员工编号">
+                <div class="errorMessage1"></div>
+            </div>
+            <div class="form-group">
+                <label for="password1">密码</label>
+                <input type="password" class="form-control" id="password1" name="password1" placeholder="登录密码">
+                <div class="errorMessage1"></div>
+            </div>
+
+            <button type="submit" id="login" class="btn btn-default center-block">
+                &nbsp;&nbsp;登&nbsp;&nbsp;录&nbsp;&nbsp;
+            </button>
+
+            <!--</form>-->
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="grass"></div>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#login-app',
+        data: {
+            workId: ''
+        },
+        methods: {
+            verifyWorkId: function () {
+                if (this.workId) {
+                    axios.get('/verifyWorkId/' + this.workId)
+                        .then(function (response) {
+                            // handle success
+                            if(response.data){
+
+                            }
+                        })
+                        .catch(function (error) {
+                            // handle error
+                            console.log(error);
+                        });
+                }
+            }
+        }
+    })
+</script>

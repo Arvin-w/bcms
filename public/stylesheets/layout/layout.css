@@ -1,0 +1,10 @@
+@charset "utf-8";
+[v-cloak]{
+    display:none !important;
+}
+body {background:url("../../images/indexBg.jpg") repeat; padding-top: 70px;}
+.logo {
+    background: url('../../images/logo.png') no-repeat left center;
+    padding-left:50px; background-size: 40px 40px; }
+.layoutFooter { margin-top: 30px; border-top:1px solid #e7e7e7; padding-top:10px; padding-bottom:10px; color:#999; }
+.boundary { border-top: 3px solid #088a9c; border-bottom: 1px solid #88ad3feb; padding-top: 1px; background: #a3c111; }

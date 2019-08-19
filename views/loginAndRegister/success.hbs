@@ -1,0 +1,17 @@
+
+<div class="container text-center">
+    <p style="height: 200px; line-height: 200px; font-size: 20px;">注册成功！<a href="/">页面将在<span id="time">5</span>秒内自动跳转到首页</a></p>
+</div>
+<script>
+    function countdown(){
+        if(parseInt($('#time').html()) == 0){
+            window.location.href = "/";
+        }else{
+            setTimeout(function(){
+                $('#time').html(parseInt($('#time').html()) - 1);
+                countdown();
+            },1000);
+        }
+    }
+    countdown();
+</script>
